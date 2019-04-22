@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			
+			#canvas{
+				width: 600px;
+				height: 600px;
+				border:solid 1px red;
+				margin: 0px auto;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<canvas id="canvas" width="600" height="600"></canvas>
+		
+		<input type="range" min="1" max="50" name="" id="size" value="1" />
+		<input type="color" name="" id="color" value="" />
+		
+		<script type="text/javascript">
+			
+			var canvas = document.querySelector("#canvas");
+			var ctx = canvas.getContext('2d');
+			var flag = false;
+			canvas.onmousedown = function(e){
+				flag = true;
+				ctx.beginPath();
+			}
+			
+			canvas.onmousemove = function(e){
+				if(flag){
+					var x = e.pageX - this.offsetLeft;
+					var y = e.pageY - this.offsetTop;
+				
+					ctx.lineTo(x,y);
+					
+					ctx.stroke();
+				}
+			}
+			canvas.onmouseup = function(e){
+				flag = false;
+				ctx.closePath();
+			}
+			
+			document.querySelector("#size").onchange = function(){
+				ctx.lineWidth = this.value;
+			}
+			
+			document.querySelector("#color").onchange = function(){
+				ctx.strokeStyle = this.value;
+			}
+			
+			
+			
+		</script>
+		
+	</body>
+</html>

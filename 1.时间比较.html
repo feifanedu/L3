@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			
+			
+			function  getDateStr(time){
+				
+				var oldDate = new Date(time);
+				var oldTimeStamp = oldDate.getTime();
+				var nowTimeStamp = new Date().getTime();
+				var n = nowTimeStamp - oldTimeStamp;
+				
+				/**
+				 *   S  ： 1000
+				 *   m  : 60000
+				 *   h  : 3600000
+				 *   D  : 86400000
+				 *   W  :  604800000
+				 *   M  : 2592000000
+				 *   Y  : 31536000000
+				 * **/
+				if(n>=31536000000){
+					return Math.floor(n/31536000000)+"年前";
+				}else if(n>=2592000000){
+					return Math.floor(n/2592000000)+"月前";
+				}else if(n>=604800000){
+					return Math.floor(n/604800000)+"星期前";
+				}else if(n>=86400000){
+					return Math.floor(n/86400000)+"天前";
+				}else if(n>=3600000){
+					return Math.floor(n/3600000)+"小时前";
+				}else if(n>=60000){
+					return Math.floor(n/60000)+"分前";
+				}else if(n>=1000){
+					return Math.floor(n/1000)+"秒前";
+				}
+				
+			}
+			
+			
+			
+			console.log(getDateStr("2019-04-18 08:20:00"))
+//			console.log(getDateStr(1555550400000))
+			
+		</script>
+		
+		
+	</body>
+</html>
